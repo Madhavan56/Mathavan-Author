@@ -63,6 +63,13 @@
     if (!header) return;
     var y = window.scrollY;
     header.classList.toggle("is-scrolled", y > 24);
+
+    if (menu && menu.classList.contains("is-open")) {
+      header.classList.remove("is-hidden");
+      lastY = y;
+      return;
+    }
+
     if (y > 140 && y > lastY + 4) {
       header.classList.add("is-hidden");
     } else if (y < lastY - 4 || y <= 140) {

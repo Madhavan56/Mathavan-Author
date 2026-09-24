@@ -206,7 +206,7 @@ button {
   right: 0;
   z-index: 50;
   background: transparent;
-  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease), transform 0.35s var(--ease), opacity 0.35s var(--ease);
   border-bottom: 1px solid transparent;
 }
 
@@ -217,7 +217,14 @@ button {
   border-bottom-color: var(--line);
 }
 
+.site-header.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -229,6 +236,8 @@ button {
   display: flex;
   flex-direction: column;
   line-height: 1.25;
+  position: relative;
+  z-index: 2;
 }
 
 .nav__brand-name {
@@ -297,6 +306,8 @@ button {
   flex-direction: column;
   gap: 5px;
   padding: 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .nav__toggle-bar {
@@ -780,7 +791,8 @@ button {
   font-size: clamp(1.3rem, 3.6vw, 2.2rem);
   font-weight: 600;
   color: var(--ink);
-  border-bottom: 1px solid var(--accent);
+  border-bottom: none;
+  text-decoration: none;
   padding-bottom: 0.15rem;
   transition: color 0.25s var(--ease);
   overflow-wrap: break-word;
@@ -790,6 +802,8 @@ button {
 .contact__email:hover,
 .contact__email:focus-visible {
   color: var(--accent-bright);
+  border-bottom: none;
+  text-decoration: none;
 }
 
 .contact__copy {
@@ -1032,42 +1046,121 @@ button {
 }
 
 @media (max-width: 760px) {
+  .nav {
+    min-height: 72px;
+    padding-block: 0.85rem;
+  }
+
+  .nav__brand {
+    max-width: 190px;
+  }
+
+  .nav__brand-name {
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    line-height: 1.2;
+  }
+
+  .nav__brand-role {
+    font-size: 0.48rem;
+    letter-spacing: 0.18em;
+  }
+
   .nav__toggle {
     display: flex;
+    z-index: 70;
   }
 
   .nav__menu {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    left: 0;
+    right: 0;
+    z-index: 65;
     flex-direction: column;
-    justify-content: center;
-    gap: 2.4rem;
-    background: rgba(12, 11, 10, 0.97);
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 0.9rem 0.9rem;
+    background: rgba(12, 11, 10, 0.98);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
     opacity: 0;
+    transform: translateY(-8px);
     pointer-events: none;
-    transition: opacity 0.35s var(--ease);
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
   }
 
   .nav__menu.is-open {
     opacity: 1;
+    transform: translateY(0);
     pointer-events: auto;
   }
 
   .nav__link {
-    font-size: 1rem;
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-align: center;
+    border-bottom: 1px solid rgba(236, 229, 216, 0.08);
+  }
+
+  .nav__cta-item {
+    padding-top: 0.35rem;
   }
 
   .nav__cta-item .nav__cta {
-    margin-top: 0.5rem;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .hero {
+    min-height: auto;
   }
 
   .hero__title {
-    font-size: clamp(3rem, 15vw, 5.5rem);
+    font-size: clamp(2.8rem, 16vw, 4.7rem);
   }
 
   .hero__content {
-    padding-block: 7rem 5rem;
+    padding-block: 8.2rem 4.6rem;
+  }
+
+  .hero__author {
+    letter-spacing: 0.2em;
+    font-size: 0.62rem;
+  }
+
+  .hero__role {
+    font-size: 0.54rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 2rem;
+  }
+
+  .hero__subtitle {
+    max-width: 18ch;
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    margin-bottom: 2.2rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__scroll {
+    bottom: 1rem;
   }
 
   .contact__inline-email {
@@ -1075,11 +1168,44 @@ button {
     overflow-wrap: break-word;
   }
 
+  .excerpt__grid {
+    gap: 2rem;
+  }
+
   .excerpt__col {
     border-left: 0;
     border-top: 2px solid var(--accent);
     padding-left: 0;
     padding-top: 1.4rem;
+  }
+
+  .excerpt__quote {
+    font-size: clamp(1.25rem, 5.5vw, 1.8rem);
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav__brand {
+    max-width: 160px;
+  }
+
+  .nav__brand-name {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .nav__brand-role {
+    font-size: 0.44rem;
+    letter-spacing: 0.14em;
+  }
+
+  .hero__author {
+    letter-spacing: 0.16em;
+  }
+
+  .hero__role {
+    letter-spacing: 0.12em;
   }
 }
 
@@ -1939,6 +2065,17 @@ html.blade-cursor .btn {
   flex-wrap: wrap;
 }
 
+.newsletter__label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.45rem;
+  text-align: left;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
 .newsletter__form input[type="email"] {
   font: inherit;
   font-size: 0.95rem;
@@ -1948,13 +2085,14 @@ html.blade-cursor .btn {
   border-radius: var(--radius);
   padding: 0.85rem 1.1rem;
   width: min(340px, 100%);
-  height: 100%;
+  min-height: 3.1rem;
 }
 
 .newsletter__form .btn {
   display: inline-flex;
   align-items: center;
   border-radius: var(--radius);
+  min-height: 3.1rem;
 }
 
 .newsletter__form input[type="email"]:focus {
@@ -1967,6 +2105,18 @@ html.blade-cursor .btn {
   margin-top: 0.9rem;
   font-size: 0.78rem;
   color: var(--ink-faint);
+}
+
+@media (max-width: 760px) {
+  .newsletter__form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .newsletter__form input[type="email"],
+  .newsletter__form .btn {
+    width: 100%;
+  }
 }
 
 /* ---------- Social links row ---------- */
@@ -2160,7 +2310,7 @@ html.blade-cursor .btn {
 /* ---------- Contact email glow on hover ---------- */
 .contact__email:hover,
 .contact__email:focus-visible {
-  text-shadow: 0 0 18px rgba(211, 40, 58, 0.45);
+  text-shadow: none;
 }
 
 /* ---------- Section divider width draw ---------- */
