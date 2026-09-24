@@ -97,7 +97,7 @@ ok(js.includes("tlItemObserver") && js.includes("drawItem"), "per-item journey o
 ok(!js.includes("motion-toggle") && !css.includes(".motion-toggle"), "motion toggle fully removed");
 ok(css.includes(".timeline__item.is-drawn") && css.includes(".timeline.has-drawn .timeline__progress"), "per-item reveal CSS present");
 ok(js.includes("runYearCounter"), "per-year counter function present");
-ok(html.includes("20260924h"), "cache version bumped to h");
+ok(html.includes("20260924i"), "cache version bumped to i");
 ok(html.includes("data-rain"), "original CSS rain present");
 
 // --- Blade cursor, clickable hint, animated progress, ambient polish ---
@@ -110,7 +110,7 @@ ok(html.includes("aria-label=\"Scroll down to the book section\""), "scroll hint
 ok(js.includes("scrollHint"), "scroll hint click handler present");
 ok(css.includes(".eyebrow.is-visible") && css.includes("tl-shimmer"), "ambient polish present");
 ok(!css.includes("transition-duration: 0.01ms !important"), "legacy animation-killer block removed");
-ok(html.includes("20260924h"), "cache version bumped to h");
+ok(html.includes("20260924i"), "cache version bumped to i");
 
 console.log(fail === 0 ? "\nALL CHECKS PASSED" : "\n" + fail + " CHECK(S) FAILED");
 process.exit(fail === 0 ? 0 : 1);

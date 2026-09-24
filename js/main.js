@@ -447,6 +447,48 @@
     }
   });
 
+  /* ---------- Copy email (newsletter card) ---------- */
+  var copyBtn = document.querySelector("[data-copy-email]");
+  var feedback = document.querySelector("[data-copy-feedback]");
+
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "absolute";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  if (copyBtn && feedback) {
+    copyBtn.addEventListener("click", function () {
+      var email = copyBtn.getAttribute("data-email") || "";
+      function done(ok) {
+        feedback.textContent = ok ? "Email copied to clipboard." : "";
+        if (ok) {
+          copyBtn.textContent = "Copied";
+          window.setTimeout(function () {
+            copyBtn.textContent = "Copy";
+            feedback.textContent = "";
+          }, 2400);
+        }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(
+          function () { done(true); },
+          function () { done(fallbackCopy(email)); }
+        );
+      } else {
+        done(fallbackCopy(email));
+      }
+    });
+  }
+
   /* ---------- Footer version tag ---------- */
   var versionEl = document.querySelector("[data-version]");
   if (versionEl) {

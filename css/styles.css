@@ -767,6 +767,59 @@ button {
   border-color: var(--accent-bright);
 }
 
+/* Big email display (newsletter section) */
+.contact__email-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.contact__email {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.6vw, 2.2rem);
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 0.15rem;
+  transition: color 0.25s var(--ease);
+  overflow-wrap: break-word;
+  line-height: 1.3;
+}
+
+.contact__email:hover,
+.contact__email:focus-visible {
+  color: var(--accent-bright);
+}
+
+.contact__copy {
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.contact__copy:hover,
+.contact__copy:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+
+.contact__copy-feedback {
+  min-height: 1.2em;
+  font-size: 0.8rem;
+  color: var(--accent-bright);
+}
+
+.newsletter__email-card {
+  margin-bottom: 2.2rem;
+  text-align: left;
+}
+
 /* ---------- CTA ---------- */
 .cta {
   background:
