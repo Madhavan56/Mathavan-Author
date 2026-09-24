@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<script>
+(async function () {
+  const out = { errors: [], checks: {} };
+  window.addEventListener("error", function (e) { out.errors.push("JS: " + e.message); });
+  try {
+    await new Promise(function (r) { setTimeout(r, 2500); });
+    const doc = document;
+    out.checks.htmlClass = doc.documentElement.className;
+    out.checks.hasToggleButton = !!doc.querySelector(".motion-toggle");
+    out.checks.toggleState = doc.querySelector(".motion-toggle") ? doc.querySelector(".motion-toggle").textContent : "";
+    const timeline = doc.querySelector(".timeline");
+    out.checks.timelineExists = !!timeline;
+    out.checks.timelineClass = timeline ? timeline.className : "";
+    const item = doc.querySelector(".timeline__item");
+    out.checks.itemOpacity = item ? getComputedStyle(item).opacity : "";
+    const y = doc.querySelector("[data-count]");
+    out.checks.yearText = y ? y.textContent : "";
+    out.checks.rainCanvas = !!doc.querySelector("[data-rain-canvas]");
+    out.checks.coverSrc = (doc.querySelector(".book__cover") || {}).getAttribute ? doc.querySelector(".book__cover").getAttribute("src") : "";
+    out.checks.versionTag = (doc.querySelector("[data-version]") || {}).textContent || "";
+    out.checks.errors = out.errors;
+  } catch (e) {
+    out.errors.push("Diag: " + e.message);
+  }
+  const el = document.createElement("div");
+  el.id = "__diag";
+  el.textContent = "DIAGSTART" + JSON.stringify(out) + "DIAGEND";
+  document.body.appendChild(el);
+})();
+</script>
+</body>
+</html>
