@@ -1121,6 +1121,9 @@ button {
 
   .hero {
     min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .hero__title {
@@ -1128,7 +1131,11 @@ button {
   }
 
   .hero__content {
+    width: 100%;
     padding-block: 8.2rem 4.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero__author {
@@ -1149,9 +1156,11 @@ button {
   }
 
   .hero__actions {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     width: 100%;
+    gap: 0.8rem;
   }
 
   .hero__actions .btn {
@@ -1160,7 +1169,31 @@ button {
   }
 
   .hero__scroll {
-    bottom: 1rem;
+    position: static;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto 0;
+    gap: 0.55rem;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    animation: none !important;
+  }
+
+  .hero__scroll-text {
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--ink-faint), transparent);
+    animation: scroll-pulse 2.4s var(--ease) infinite;
+    transform: none;
   }
 
   .contact__inline-email {
