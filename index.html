@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260924i" />
+  <link rel="stylesheet" href="css/styles.css?v=20260924j" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -359,7 +359,10 @@
 
         <div class="contact__card reveal">
 
-          <form class="form" data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <form class="form" data-contact-form action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="84f38a02-ed83-4a91-a05d-6b456d4ba091" />
+            <input type="hidden" name="subject" value="New message from author website" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="form__row">
               <div class="form__field">
                 <label for="cf-name">Name</label>
@@ -408,12 +411,15 @@
         </div>
 
         <p class="contact__intro reveal">Occasional letters about new stories, releases, and the world behind THE LAST BLADE. No noise — real news only.</p>
-        <form class="newsletter__form reveal" data-newsletter-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <form class="newsletter__form reveal" data-newsletter-form action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="84f38a02-ed83-4a91-a05d-6b456d4ba091" />
+          <input type="hidden" name="subject" value="Newsletter signup — THE LAST BLADE" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
           <label class="skip-link" for="nl-email">Email address</label>
           <input id="nl-email" type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
           <button class="btn btn--primary" type="submit">Subscribe</button>
         </form>
-        <p class="newsletter__note reveal">One-click unsubscribe any time. Emails handled via Formspree.</p>
+        <p class="newsletter__note reveal">One-click unsubscribe any time. Emails handled securely via Web3Forms.</p>
       </div>
     </section>
   </main>
@@ -426,7 +432,7 @@
           <p class="footer__role">Independent Author &amp; Storyteller</p>
           <p class="footer__email">Email: <a href="mailto:madhavan4356@gmail.com">madhavan4356@gmail.com</a></p>
           <div class="social-row">
-            <a class="social-link" href="https://www.goodreads.com/madhavanumamageshwari" target="_blank" rel="noopener noreferrer">Goodreads</a>
+            <a class="social-link" href="https://www.goodreads.com/user/show/204401605" target="_blank" rel="noopener noreferrer">Goodreads</a>
             <a class="social-link" href="https://www.amazon.in/dp/0e9SRNmb" target="_blank" rel="noopener noreferrer">Amazon</a>
             <a class="social-link" href="press.html">Press Kit</a>
           </div>
@@ -453,12 +459,12 @@
 
       <div class="footer__bottom">
         <p>THE LAST BLADE &copy; 2026 Mathavan Uma Mageshwari. All rights reserved.</p>
-        <p class="footer__version" data-version aria-hidden="true">Site version 20260924i</p>
+        <p class="footer__version" data-version aria-hidden="true">Site version 20260924j</p>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260924i" defer></script>
-  <script>window.SITE_VERSION = "20260924i";</script>
+  <script src="js/main.js?v=20260924j" defer></script>
+  <script>window.SITE_VERSION = "20260924j";</script>
 </body>
 </html>

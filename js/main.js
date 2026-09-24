@@ -516,22 +516,22 @@
   });
 
   /* ============================================================
-     13. Forms — contact + newsletter (Formspree-ready)
+     13. Forms — contact + newsletter via Web3Forms
      ============================================================ */
-  function wireForm(form, statusEl, successMsg) {
+  function wireForm(form, statusEl, successMsg, noteEl) {
     if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var action = form.getAttribute("action") || "";
-      if (action.indexOf("YOUR_FORM_ID") > -1) {
-        if (statusEl) statusEl.textContent = "Form not connected yet — add your Formspree ID (see README).";
-        return;
-      }
       if (statusEl) statusEl.textContent = "Sending\u2026";
       var data = new FormData(form);
-      fetch(action, { method: "POST", body: data, headers: { Accept: "application/json" } })
-        .then(function (res) {
-          if (res.ok) {
+      fetch(form.getAttribute("action"), {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          if (result && result.success) {
             if (statusEl) statusEl.textContent = successMsg;
             form.reset();
           } else {
@@ -554,7 +554,7 @@
     var nlForm = document.querySelector("[data-newsletter-form]");
     if (!nlForm) return;
     var note = nlForm.parentNode.querySelector(".newsletter__note");
-    wireForm(nlForm, note, null);
+    wireForm(nlForm, null, "", note);
   })();
 
   /* ============================================================
