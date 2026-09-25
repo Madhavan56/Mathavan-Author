@@ -97,7 +97,7 @@ ok(js.includes("tlItemObserver") && js.includes("drawItem"), "per-item journey o
 ok(!js.includes("motion-toggle") && !css.includes(".motion-toggle"), "motion toggle fully removed");
 ok(css.includes(".timeline__item.is-drawn") && css.includes(".timeline.has-drawn .timeline__progress"), "per-item reveal CSS present");
 ok(js.includes("runYearCounter"), "per-year counter function present");
-ok(html.includes("20260924j"), "cache version bumped to j");
+ok(html.includes("20260925b"), "cache version bumped to 20260925b");
 ok(html.includes("data-rain"), "original CSS rain present");
 
 // --- Blade cursor, clickable hint, animated progress, ambient polish ---
@@ -110,7 +110,20 @@ ok(html.includes("aria-label=\"Scroll down to the book section\""), "scroll hint
 ok(js.includes("scrollHint"), "scroll hint click handler present");
 ok(css.includes(".eyebrow.is-visible") && css.includes("tl-shimmer"), "ambient polish present");
 ok(!css.includes("transition-duration: 0.01ms !important"), "legacy animation-killer block removed");
-ok(html.includes("20260924j"), "cache version bumped to j");
+
+// --- Ninja story companion ---
+ok(html.includes("ninja-runner"), "ninja runner element present");
+ok(html.includes("data-ninja="), "sections carry ninja scene attributes");
+ok(html.includes("ninja-enemy.svg") && html.includes("ninja-spark.svg"), "enemy + spark elements present");
+["ninja-run.svg", "ninja-sneak.svg", "ninja-alert.svg", "ninja-meditate.svg", "ninja-dash.svg", "ninja-shuriken.svg", "ninja-watch.svg", "ninja-signal.svg", "ninja-fight.svg", "ninja-bow.svg"].forEach(function (f) {
+  const s = fs.readFileSync("assets/" + f, "utf8").trim();
+  ok(s.startsWith("<svg") && s.endsWith("</svg>"), f + " well-formed");
+});
+ok(css.includes(".ninja-runner.is-visible") && css.includes("ninja-bob"), "ninja runner CSS present");
+ok(css.includes(".ninja-runner.is-fighting") && css.includes("ninja-clash"), "fight scene CSS present");
+ok(js.includes("onScrollNinja") && js.includes("setScene") && js.includes("SCENES"), "ninja scene manager present");
+ok(css.includes(".motion-off .ninja-runner"), "ninja runner motion-off fallback present");
+ok(html.includes("20260925b"), "cache version bumped to 20260925b");
 
 console.log(fail === 0 ? "\nALL CHECKS PASSED" : "\n" + fail + " CHECK(S) FAILED");
 process.exit(fail === 0 ? 0 : 1);

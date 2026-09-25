@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- sword behind body -->
+  <line x1="27" y1="35" x2="40" y2="7" stroke="#b3aa98" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="36.6" y="3.6" width="8" height="2.8" rx="1.4" transform="rotate(24 40.6 5)" fill="#3a332b"/>
+  <!-- back arm -->
+  <path d="M35 18 L28.5 22.5 L23 20" stroke="#ece5d8" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- back leg (extended) -->
+  <path d="M30 29.5 L21.5 35.5 L13.5 39.5" stroke="#ece5d8" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- torso (leaning forward) -->
+  <path d="M33.5 14.5 Q41 15.5 39.5 23 Q38.5 28.5 30.5 30.5 Q27.5 23.5 29.5 17.5 Q31 14.8 33.5 14.5 Z" fill="#ece5d8"/>
+  <!-- front leg (knee up) -->
+  <path d="M32.5 29.5 L42 31 L45 39" stroke="#ece5d8" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- front arm (pumping) -->
+  <path d="M37.5 17.5 L44.5 20.5 L47.5 15.5" stroke="#ece5d8" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- scarf trailing behind -->
+  <path d="M32 13.5 Q23 11 14.5 15 Q21.5 13.5 29 16.5 Z" fill="#b3202e"/>
+  <path d="M31 15.5 Q24 15 18.5 19 Q24.5 17.5 30 18.5 Z" fill="#7e1620"/>
+  <!-- head -->
+  <circle cx="38" cy="10.5" r="6.8" fill="#ece5d8"/>
+  <!-- eye band -->
+  <rect x="31.6" y="7.6" width="13" height="3.8" rx="1.9" fill="#0c0b0a"/>
+  <circle cx="42.2" cy="9.5" r="1.25" fill="#d3283a"/>
+  <!-- band knot -->
+  <path d="M31.8 9.5 L26.5 8 L26.8 11.5 Z" fill="#0c0b0a"/>
+</svg>

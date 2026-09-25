@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260924j" />
+  <link rel="stylesheet" href="css/styles.css?v=20260925b" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -115,7 +115,7 @@
 
   <main id="main">
     <!-- ================= 1. HERO ================= -->
-    <section class="hero" id="home" aria-label="Introduction">
+    <section class="hero" id="home" data-ninja="run" aria-label="Introduction">
       <div class="hero__backdrop" aria-hidden="true">
         <span class="hero__glow hero__glow--one" data-parallax="0.12"></span>
         <span class="hero__glow hero__glow--two" data-parallax="-0.06"></span>
@@ -141,7 +141,7 @@
     </section>
 
     <!-- ================= 2. BOOK ================= -->
-    <section class="section book" id="book" aria-labelledby="book-title">
+    <section class="section book" id="book" data-ninja="sneak" aria-labelledby="book-title">
       <div class="container">
         <div class="book__layout">
           <div class="book__cover-col reveal">
@@ -188,7 +188,7 @@
     </section>
 
     <!-- ================= 2.5 EXCERPT ================= -->
-    <section class="section excerpt" id="excerpt" aria-labelledby="excerpt-title">
+    <section class="section excerpt" id="excerpt" data-ninja="alert" aria-labelledby="excerpt-title">
       <div class="container">          <div class="excerpt__grid">
           <div class="excerpt__col reveal">
             <p class="eyebrow">From the Book</p>
@@ -204,7 +204,7 @@
     </section>
 
     <!-- ================= 3. ABOUT THE BOOK ================= -->
-    <section class="section about-book" id="about-book" aria-labelledby="about-book-title">
+    <section class="section about-book" id="about-book" data-ninja="meditate" aria-labelledby="about-book-title">
       <div class="container container--narrow">
         <p class="eyebrow reveal">About the Book</p>
         <h2 class="section-title reveal" id="about-book-title">A quiet family. A buried past. A blade that was never meant to be forgotten.</h2>
@@ -225,7 +225,7 @@
     </section>
 
     <!-- ================= 4. ABOUT THE AUTHOR ================= -->
-    <section class="section about" id="about" aria-labelledby="about-title">
+    <section class="section about" id="about" data-ninja="dash" aria-labelledby="about-title">
       <div class="container">
         <p class="eyebrow reveal">About the Author</p>
         <h2 class="section-title reveal" id="about-title">Mathavan Uma Mageshwari</h2>
@@ -251,7 +251,7 @@
     </section>
 
     <!-- ================= 5. AUTHOR'S JOURNEY ================= -->
-    <section class="section journey" id="journey" aria-labelledby="journey-title">
+    <section class="section journey" id="journey" data-ninja="shuriken" aria-labelledby="journey-title">
       <div class="container container--narrow">
         <p class="eyebrow reveal">Author&rsquo;s Journey</p>
         <h2 class="section-title reveal" id="journey-title">The Story So Far</h2>
@@ -279,7 +279,7 @@
     </section>
 
     <!-- ================= 5.5 AUTHOR UPDATES ================= -->
-    <section class="section updates" id="updates" aria-labelledby="updates-title">
+    <section class="section updates" id="updates" data-ninja="watch" aria-labelledby="updates-title">
       <div class="container container--narrow">
         <p class="eyebrow reveal">Stay Current</p>
         <h2 class="section-title reveal" id="updates-title">Author Updates</h2>
@@ -304,7 +304,7 @@
     </section>
 
     <!-- ================= 5.8 FAQ ================= -->
-    <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <section class="section faq" id="faq" data-ninja="signal" aria-labelledby="faq-title">
       <div class="container container--narrow">
         <p class="eyebrow reveal">Questions</p>
         <h2 class="section-title reveal" id="faq-title">Frequently Asked</h2>
@@ -350,7 +350,7 @@
     </section>
 
     <!-- ================= 6. CONTACT ================= -->
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <section class="section contact" id="contact" data-ninja="run" aria-labelledby="contact-title">
       <div class="container container--narrow">
         <p class="eyebrow reveal">Contact</p>
         <h2 class="section-title reveal" id="contact-title">CONTACT THE AUTHOR</h2>
@@ -384,7 +384,7 @@
     </section>
 
     <!-- ================= 7. AMAZON CTA ================= -->
-    <section class="section cta" id="buy" aria-labelledby="cta-title">
+    <section class="section cta" id="buy" data-ninja="fight" aria-labelledby="cta-title">
       <div class="container">
         <h2 class="cta__title reveal" id="cta-title">THE PAST NEVER STAYS BURIED.</h2>
         <p class="cta__subtitle reveal">Discover THE LAST BLADE.</p>
@@ -395,7 +395,7 @@
     </section>
 
     <!-- ================= 7.5 NEWSLETTER ================= -->
-    <section class="section newsletter" id="newsletter" aria-labelledby="newsletter-title">
+    <section class="section newsletter" id="newsletter" data-ninja="bow" aria-labelledby="newsletter-title">
       <div class="container container--narrow">
         <p class="eyebrow reveal">Newsletter</p>
         <h2 class="section-title reveal" id="newsletter-title">Follow the blade.</h2>
@@ -421,6 +421,13 @@
       </div>
     </section>
   </main>
+
+  <!-- ================= 7.8 NINJA STORY COMPANION ================= -->
+  <div class="ninja-runner" id="ninja-runner" aria-hidden="true">
+    <img class="ninja-runner__sprite" src="assets/ninja-run.svg" alt="" width="64" height="64" />
+    <img class="ninja-runner__enemy" src="assets/ninja-enemy.svg" alt="" width="64" height="64" />
+    <img class="ninja-runner__spark" src="assets/ninja-spark.svg" alt="" width="64" height="64" />
+  </div>
 
   <!-- ================= 8. FOOTER ================= -->
   <footer class="site-footer">
@@ -457,12 +464,12 @@
 
       <div class="footer__bottom">
         <p>THE LAST BLADE &copy; 2026 Mathavan Uma Mageshwari. All rights reserved.</p>
-        <p class="footer__version" data-version aria-hidden="true">Site version 20260924j</p>
+        <p class="footer__version" data-version aria-hidden="true">Site version 20260925b</p>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260924j" defer></script>
-  <script>window.SITE_VERSION = "20260924j";</script>
+  <script src="js/main.js?v=20260925b" defer></script>
+  <script>window.SITE_VERSION = "20260925b";</script>
 </body>
 </html>
