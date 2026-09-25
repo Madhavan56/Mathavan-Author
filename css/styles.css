@@ -1131,7 +1131,6 @@ button {
   }
 
   .hero__content {
-    width: 100%;
     padding-block: 8.2rem 4.6rem;
     display: flex;
     flex-direction: column;
