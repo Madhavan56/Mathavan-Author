@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="tb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d0e12"/>
+      <stop offset="0.6" stop-color="#141118"/>
+      <stop offset="1" stop-color="#08080b"/>
+    </linearGradient>
+    <radialGradient id="crim" cx="0.5" cy="0.55" r="0.5">
+      <stop offset="0" stop-color="#b3202e" stop-opacity="0.4"/>
+      <stop offset="0.5" stop-color="#7e1620" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#7e1620" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#tb)"/>
+  <ellipse cx="800" cy="520" rx="560" ry="300" fill="url(#crim)"/>
+  <!-- the blade planted in the ground -->
+  <g>
+    <line x1="800" y1="180" x2="800" y2="600" stroke="#c9cbd4" stroke-width="10" stroke-linecap="round"/>
+    <line x1="800" y1="180" x2="800" y2="600" stroke="#f2f3f7" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+    <rect x="768" y="600" width="64" height="14" rx="6" fill="#3a332b"/>
+    <line x1="800" y1="614" x2="800" y2="700" stroke="#2a251d" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <!-- its reflection in wet ground -->
+  <line x1="800" y1="730" x2="800" y2="850" stroke="#8e2530" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+  <ellipse cx="800" cy="716" rx="140" ry="18" fill="#b3202e" opacity="0.12"/>
+  <!-- ground mist -->
+  <g fill="#3a4152" opacity="0.14">
+    <ellipse cx="500" cy="760" rx="300" ry="40"/>
+    <ellipse cx="1100" cy="790" rx="340" ry="44"/>
+    <ellipse cx="800" cy="820" rx="420" ry="50"/>
+  </g>
+  <!-- falling rain -->
+  <g stroke="#aebcd2" stroke-width="1.4" opacity="0.15">
+    <line x1="300" y1="100" x2="266" y2="220"/>
+    <line x1="520" y1="180" x2="486" y2="300"/>
+    <line x1="700" y1="80" x2="666" y2="200"/>
+    <line x1="920" y1="160" x2="886" y2="280"/>
+    <line x1="1100" y1="90" x2="1066" y2="210"/>
+    <line x1="1320" y1="200" x2="1286" y2="320"/>
+    <line x1="420" y1="420" x2="386" y2="540"/>
+    <line x1="1180" y1="430" x2="1146" y2="550"/>
+    <line x1="800" y1="380" x2="766" y2="500"/>
+  </g>
+  <rect width="1600" height="900" fill="#0c0b0a" opacity="0.22"/>
+</svg>

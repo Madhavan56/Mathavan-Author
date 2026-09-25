@@ -1853,6 +1853,169 @@ html.blade-cursor .btn {
   cursor: url("../assets/blade-cursor-accent.svg") 2 2, pointer;
 }
 
+/* ---------- Cinematic story scenes ---------- */
+.story {
+  position: relative;
+}
+
+.scene {
+  position: relative;
+  min-height: clamp(420px, 78vh, 720px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.scene + .scene {
+  border-top: 1px solid rgba(38, 34, 29, 0.9);
+}
+
+.scene__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.scene__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  transition: transform 7s var(--ease);
+  will-change: transform;
+}
+
+.scene.is-visible .scene__img {
+  transform: scale(1);
+}
+
+.scene__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 11, 10, 0.62) 0%, rgba(12, 11, 10, 0.18) 45%, rgba(12, 11, 10, 0.88) 100%);
+}
+
+.scene__text {
+  position: relative;
+  width: min(1120px, 100% - 3rem);
+  margin-inline: auto;
+  padding-block: clamp(3rem, 8vh, 6rem) clamp(2.6rem, 7vh, 5rem);
+}
+
+.scene__chapter {
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  font-weight: 500;
+  margin-bottom: 1.1rem;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+}
+
+.scene__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4.4vw, 3.1rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  max-width: 22ch;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.scene__sub {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.02rem, 2vw, 1.3rem);
+  color: var(--ink-soft);
+  max-width: 46ch;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+/* Alternate alignment so scenes feel framed, not templated */
+.scene:nth-child(even) .scene__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.scene:nth-child(even) .scene__quote,
+.scene:nth-child(even) .scene__sub {
+  text-align: right;
+}
+
+/* After the revenge: warmer, softer shade */
+.scene--after .scene__shade {
+  background:
+    linear-gradient(180deg, rgba(12, 11, 10, 0.5) 0%, rgba(12, 11, 10, 0.1) 45%, rgba(12, 11, 10, 0.82) 100%);
+}
+
+.scene--after .scene__chapter {
+  color: #d9b478;
+}
+
+/* Mobile: vertical cinematic card */
+@media (max-width: 760px) {
+  .scene {
+    min-height: 0;
+    display: block;
+    background: var(--bg-raise);
+  }
+
+  .scene__media {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .scene__img {
+    height: 100%;
+  }
+
+  .scene__shade {
+    background:
+      linear-gradient(180deg, rgba(12, 11, 10, 0.35) 0%, rgba(12, 11, 10, 0) 40%, rgba(12, 11, 10, 0.92) 100%);
+  }
+
+  .scene__text {
+    width: 100%;
+    padding: 1.6rem 1.4rem 2.2rem;
+  }
+
+  .scene:nth-child(even) .scene__text {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .scene:nth-child(even) .scene__quote,
+  .scene:nth-child(even) .scene__sub {
+    text-align: left;
+  }
+
+  .scene__quote {
+    max-width: none;
+  }
+}
+
+/* Reduced motion: no slow zoom */
+@media (prefers-reduced-motion: reduce) {
+  .scene__img {
+    transform: none;
+    transition: none;
+  }
+}
+
+.motion-off .scene__img {
+  transform: none !important;
+  transition: none !important;
+}
+
 /* ---------- Excerpt section ---------- */
 .excerpt {
   background: var(--bg-raise);

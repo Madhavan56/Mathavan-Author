@@ -261,6 +261,7 @@
      6. Reveal on scroll — staggered via --reveal-delay custom prop
      ============================================================ */
   var revealEls = document.querySelectorAll(".reveal");
+  var sceneEls = document.querySelectorAll(".scene");
 
   if ("IntersectionObserver" in window) {
     var revealObserver = new IntersectionObserver(
@@ -280,8 +281,22 @@
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     revealEls.forEach(function (el) { revealObserver.observe(el); });
+
+    // Cinematic scenes: trigger the slow zoom when a scene enters
+    var sceneObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          sceneObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.28 }
+    );
+    sceneEls.forEach(function (el) { sceneObserver.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+    sceneEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
   /* ============================================================
