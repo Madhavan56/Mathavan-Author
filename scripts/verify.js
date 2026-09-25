@@ -97,7 +97,7 @@ ok(js.includes("tlItemObserver") && js.includes("drawItem"), "per-item journey o
 ok(!js.includes("motion-toggle") && !css.includes(".motion-toggle"), "motion toggle fully removed");
 ok(css.includes(".timeline__item.is-drawn") && css.includes(".timeline.has-drawn .timeline__progress"), "per-item reveal CSS present");
 ok(js.includes("runYearCounter"), "per-year counter function present");
-ok(html.includes("20260925c"), "cache version bumped to 20260925c");
+ok(html.includes("20260925d"), "cache version bumped to 20260925d");
 ok(html.includes("data-rain"), "original CSS rain present");
 
 // --- Blade cursor, clickable hint, animated progress, ambient polish ---
@@ -114,9 +114,15 @@ ok(!css.includes("transition-duration: 0.01ms !important"), "legacy animation-ki
 // --- Cinematic story scenes ---
 var sceneIds = ["scene-1-title", "scene-2-title", "scene-3-title", "scene-4-title", "scene-5-title", "scene-6-title", "scene-7-title", "scene-8-title", "scene-9-title"];
 sceneIds.forEach(function (id) { ok(html.includes(id), "story scene present: " + id); });
-["scene-01-house.svg", "scene-02-rain.svg", "scene-03-station.svg", "scene-04-night.svg", "scene-05-warehouse.svg", "scene-06-tokyo.svg", "scene-07-past.svg", "scene-08-final.svg", "scene-09-dawn.svg"].forEach(function (f) {
-  const s = fs.readFileSync("assets/" + f, "utf8").trim();
-  ok(s.startsWith("<svg") && s.endsWith("</svg>") && !s.includes("t\u00e9l\u00e9"), f + " well-formed");
+["scene-01-house", "scene-02-rain", "scene-03-station", "scene-04-night", "scene-05-warehouse", "scene-06-tokyo", "scene-07-past", "scene-08-final", "scene-09-dawn"].forEach(function (f) {
+  const p = "assets/" + f + ".jpg";
+  if (fs.existsSync(p)) {
+    const kb = Math.round(fs.statSync(p).size / 1024);
+    ok(kb >= 20 && kb < 900, p + " exists, " + kb + "KB (reasonable size)");
+    ok(html.includes(p), p + " wired into page");
+  } else {
+    ok(false, p + " missing");
+  }
 });
 ok(html.includes("She thought she had finally left the past behind"), "scene quote 1 present");
 ok(html.includes("Grief had changed her"), "scene quote 5 present");
@@ -125,20 +131,8 @@ ok(html.includes("Others end when you finally choose to let go"), "scene closing
 ok(css.includes(".scene__shade") && css.includes(".scene__quote"), "scene CSS present");
 ok(css.includes("scene--after"), "after-revenge scene styled");
 ok(js.includes("sceneObserver"), "scene reveal observer present");
-
-// --- Ninja story companion ---
-ok(html.includes("ninja-runner"), "ninja runner element present");
-ok(html.includes("data-ninja="), "sections carry ninja scene attributes");
-ok(html.includes("ninja-enemy.svg") && html.includes("ninja-spark.svg"), "enemy + spark elements present");
-["ninja-run.svg", "ninja-sneak.svg", "ninja-alert.svg", "ninja-meditate.svg", "ninja-dash.svg", "ninja-shuriken.svg", "ninja-watch.svg", "ninja-signal.svg", "ninja-fight.svg", "ninja-bow.svg"].forEach(function (f) {
-  const s = fs.readFileSync("assets/" + f, "utf8").trim();
-  ok(s.startsWith("<svg") && s.endsWith("</svg>"), f + " well-formed");
-});
-ok(css.includes(".ninja-runner.is-visible") && css.includes("ninja-bob"), "ninja runner CSS present");
-ok(css.includes(".ninja-runner.is-fighting") && css.includes("ninja-clash"), "fight scene CSS present");
-ok(js.includes("onScrollNinja") && js.includes("setScene") && js.includes("SCENES"), "ninja scene manager present");
-ok(css.includes(".motion-off .ninja-runner"), "ninja runner motion-off fallback present");
-ok(html.includes("20260925c"), "cache version bumped to 20260925c");
+ok(!html.includes("ninja") && !css.includes("ninja") && !js.includes("ninja"), "ninja fully removed");
+ok(html.includes("20260925d"), "cache version bumped to 20260925d");
 
 console.log(fail === 0 ? "\nALL CHECKS PASSED" : "\n" + fail + " CHECK(S) FAILED");
 process.exit(fail === 0 ? 0 : 1);

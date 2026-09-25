@@ -96,111 +96,11 @@
     window.requestAnimationFrame(function () {
       onScrollHeader();
       onScrollProgress();
-      onScrollNinja();
       scrollScheduled = false;
     });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
-
-  /* ============================================================
-     3.5 Ninja story companion — acts out the book, section by section
-     ============================================================ */
-  var ninja = document.getElementById("ninja-runner");
-
-  function onScrollNinja() {
-    if (!ninja) return;
-    var y = window.scrollY;
-    var max = docEl.scrollHeight - window.innerHeight;
-    var ratio = max > 0 ? y / max : 0;
-
-    // Show after leaving the hero, hide while entering the footer
-    var footer = document.querySelector(".site-footer");
-    var footerTop = footer ? footer.getBoundingClientRect().top : Infinity;
-    var leaving = footerTop < window.innerHeight * 1.05;
-
-    ninja.classList.toggle("is-visible", y > window.innerHeight * 0.5 && !leaving);
-    ninja.classList.toggle("is-leaving", leaving && y > window.innerHeight * 0.5);
-
-    // Run only while the page is actually moving; pause when idle
-    ninja.classList.toggle("is-paused", Math.abs(y - (ninja._lastY || 0)) < 2);
-    ninja._lastY = y;
-  }
-
-  /* ---------- Story scenes: each section gets its own pose ---------- */
-  var SCENES = {
-    run:      { src: "assets/ninja-run.svg",      enemy: false },
-    sneak:    { src: "assets/ninja-sneak.svg",    enemy: false },
-    alert:    { src: "assets/ninja-alert.svg",    enemy: false },
-    meditate: { src: "assets/ninja-meditate.svg", enemy: false },
-    dash:     { src: "assets/ninja-dash.svg",     enemy: false },
-    shuriken: { src: "assets/ninja-shuriken.svg", enemy: false },
-    watch:    { src: "assets/ninja-watch.svg",    enemy: false },
-    signal:   { src: "assets/ninja-signal.svg",   enemy: false },
-    fight:    { src: "assets/ninja-fight.svg",    enemy: true  },
-    bow:      { src: "assets/ninja-bow.svg",      enemy: false }
-  };
-
-  var currentScene = null;
-  var spriteEl = null;
-
-  function setScene(name) {
-    if (!ninja || name === currentScene || !SCENES[name]) return;
-    currentScene = name;
-    var scene = SCENES[name];
-
-    if (!spriteEl) spriteEl = ninja.querySelector(".ninja-runner__sprite");
-    if (spriteEl && spriteEl.getAttribute("src") !== scene.src) {
-      spriteEl.setAttribute("src", scene.src);
-      if (!reduceMotion) {
-        spriteEl.classList.remove("is-swapping");
-        void spriteEl.offsetWidth;
-        spriteEl.classList.add("is-swapping");
-      }
-    }
-
-    ninja.classList.toggle("is-fighting", !!scene.enemy);
-  }
-
-  function watchScenes() {
-    if (!ninja) return;
-    var sections = document.querySelectorAll("[data-ninja]");
-    if (!sections.length) return;
-
-    // Preload all pose sprites so swaps are instant
-    Object.keys(SCENES).forEach(function (key) {
-      var img = new Image();
-      img.src = SCENES[key].src;
-    });
-
-    if ("IntersectionObserver" in window) {
-      var sceneObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              setScene(entry.target.getAttribute("data-ninja"));
-            }
-          });
-        },
-        { rootMargin: "-40% 0px -40% 0px" }
-      );
-      sections.forEach(function (s) { sceneObserver.observe(s); });
-    } else {
-      // Fallback: pick the scene whose section is nearest the viewport middle
-      window.addEventListener("scroll", function () {
-        var best = null;
-        var bestDist = Infinity;
-        sections.forEach(function (s) {
-          var r = s.getBoundingClientRect();
-          var dist = Math.abs(r.top + r.height / 2 - window.innerHeight / 2);
-          if (dist < bestDist) { bestDist = dist; best = s; }
-        });
-        if (best) setScene(best.getAttribute("data-ninja"));
-      }, { passive: true });
-    }
-  }
-
-  watchScenes();
 
   /* ============================================================
      4. Mobile nav
